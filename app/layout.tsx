@@ -73,13 +73,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  noSidebar = false, // Conditional prop to disable sidebar styles
+  noSidebar = false,
 }: {
   children: React.ReactNode;
-  noSidebar?: boolean; // Optional prop for pages without sidebar
+  noSidebar?: boolean;
 }) {
   return (
-    <html suppressHydrationWarning lang="en">
+    <html
+      suppressHydrationWarning
+      lang="en"
+      className="overflow-x-hidden" // ✅ Added
+    >
       <head />
       <body
         className={clsx(
@@ -90,10 +94,9 @@ export default function RootLayout({
           backgroundImage: "url('https://i.ibb.co/5Y2tMn3/bgimg.png')",
         }}
       >
-        <div className="relative flex flex-col min-h-screen">
+        <div className="relative flex flex-col min-h-screen max-w-full overflow-hidden"> {/* ✅ Safe container */}
           <Navbar />
           <LoadingWrapper>
-            {/* Conditionally apply the sidebar margin-left */}
             <main className={clsx("flex-grow", !noSidebar && "md:ml-64")}>
               {children}
             </main>
