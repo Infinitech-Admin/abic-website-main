@@ -64,30 +64,37 @@ export default function Footer() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     setLoading(true);
-
+  
     try {
       const response = await axios.post(
         "https://abicmanpowerservicecorp.com/api/main/subscribers",
         { email }
       );
-
+  
       const emailAgentResponse = await axios.post(
         "/api/email/inquiry/newsletter",
         { email },
         { headers: { Accept: "application/json" } }
       );
-
+  
       if (response?.data && emailAgentResponse?.data) {
         toast.success("Successfully subscribed!");
         setEmail("");
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
-      toast.error("Subscription failed. Please try again.");
+  
+      const message =
+        error.response?.data?.message ||
+        error.response?.data?.error ||
+        "Subscription failed. Please try again.";
+  
+      toast.error(message);
     } finally {
       setLoading(false);
     }
   };
+  
 
   const quickLinks = [
     { label: "Home", href: "/" },

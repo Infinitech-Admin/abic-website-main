@@ -43,12 +43,32 @@ export default function PropertyFinderClient({ properties }: Props) {
           </p>
 
           {/* Back to Home button positioned top-left */}
-          <button
-            onClick={() => router.push("/")}
-            className="bg-violet-700 text-white rounded-md mt-4 text-sm px-4 py-2 inline-block w-[100px] mb-6"
-          >
-            Back
-          </button>
+          <div className="relative group w-fit mt-4 mb-6">
+  <button
+    onClick={() => router.push("/")}
+    className="bg-violet-700 text-white rounded-md p-2 flex items-center justify-center"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth="1.5"
+      stroke="currentColor"
+      className="w-5 h-5"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"
+      />
+    </svg>
+  </button>
+  <span className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-all duration-300">
+    Back
+  </span>
+</div>
+
+
 
           <Suspense fallback={<div>Loading sections...</div>}>
             <FilteredPropertiesSection properties={properties} />

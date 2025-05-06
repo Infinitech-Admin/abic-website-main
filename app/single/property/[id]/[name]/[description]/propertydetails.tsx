@@ -7,7 +7,7 @@ import toast from 'react-hot-toast';
 import { BsCopy, BsHouseCheckFill } from 'react-icons/bs';
 import { FaCalendarCheck } from 'react-icons/fa6';
 import { LuBuilding2 } from 'react-icons/lu';
-import { MdPayments } from 'react-icons/md';
+import { MdPayments,MdAccountBalanceWallet  } from 'react-icons/md';
 import { TbRulerMeasure2 } from 'react-icons/tb';
 
 interface Property {
@@ -195,15 +195,15 @@ const PropertyDetails: React.FC<PropertyProps> = ({ properties }) => {
                             </div>
 
                             <div className="text-base text-violet-600">
-                                <div className="flex items-center gap-2 bg-default-200 px-2 py-2 rounded-lg">
-                                    <div className="bg-violet-200 text-violet-800 px-2 py-2 rounded-lg">
-                                        <MdPayments />
-                                    </div>
-                                    <p className="text-base text-violet-600">
-                                        {properties.terms}
-                                    </p>
-                                </div>
-                            </div>
+  <div className="flex items-center gap-2 bg-default-200 px-2 py-2 rounded-lg">
+    <div className="bg-violet-200 text-violet-800 px-2 py-2 rounded-lg">
+      <MdAccountBalanceWallet  /> {/* Changed to MdReceipt */}
+    </div>
+    <p className="text-base text-violet-600">
+      {properties.terms}
+    </p>
+  </div>
+</div>
                         </>
 
                     ) : null}
